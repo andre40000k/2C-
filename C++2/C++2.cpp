@@ -49,7 +49,7 @@ void data_input(Shkolota* shkolota, int n)
 		cout << endl << "Фамилия: ";
 		cin >> shkolota[i].name;
 
-		/*cout << "\nИмя: ";
+		cout << "\nИмя: ";
 		cin >> shkolota[i].last_name;
 
 		cout << "\nОтчество: ";
@@ -114,7 +114,7 @@ void data_input(Shkolota* shkolota, int n)
 
 		cout << "\nКласс ";
 		cin >> shkolota[i].clas;
-	  */
+	  
 	}
 }
 
@@ -125,7 +125,7 @@ void data_input2(Shkolota* shkolota, int n, int a)
 		cout << endl << "Фамилия: ";
 		cin >> shkolota[i].name;
 
-		/*cout << "\nИмя: ";
+		cout << "\nИмя: ";
 		cin >> shkolota[i].last_name;
 
 		cout << "\nОтчество: ";
@@ -190,7 +190,7 @@ void data_input2(Shkolota* shkolota, int n, int a)
 
 		cout << "\nКласс ";
 		cin >> shkolota[i].clas;
-	  */
+	  
 	}
 }
 
@@ -208,44 +208,47 @@ void sort_name(Shkolota* shkolota, int n, int a)
 	}
 }
 
-//void sort_date(Shkolota* shkolota, int n, int a)
-//{
-//	for (int i = 0; i < n+a; i++)
-//	{
-//		for (int j = i + 1; j < n+a; j++)
-//		{
-//			int temp1 = shkolota[i].date[0] + (shkolota[i].date[1] * 30) + (shkolota[i].date[2] * 365);
-//			int temp2 = shkolota[j].date[0] + (shkolota[j].date[1] * 30) + (shkolota[j].date[2] * 365);
-//			if (temp1 < temp2)
-//			{
-//				swap(shkolota[i], shkolota[j]);
-//			}
-//		}
-//	}
-//}
+void sort_date(Shkolota* shkolota, int n, int a)
+{
+	for (int i = 0; i < n+a; i++)
+	{
+		for (int j = i + 1; j < n+a; j++)
+		{
+			int temp1 = shkolota[i].date[0] + (shkolota[i].date[1] * 30) + (shkolota[i].date[2] * 365);
+			int temp2 = shkolota[j].date[0] + (shkolota[j].date[1] * 30) + (shkolota[j].date[2] * 365);
+			if (temp1 < temp2)
+			{
+				swap(shkolota[i], shkolota[j]);
+			}
+		}
+	}
+}
 
 void Poisk(Shkolota* shkolota, int n, int a)
 {
 	string q;
 	cout << "Введите фамилию для поиска студента(ов): ";
 	cin >> q;
-	for (int i = 0; i < n; i++)
+	int proverca = 0;
+	for (int i = 0; i < n+a; i++)
 	{
 		if (shkolota[i].name == q)
 		{
-			cout << endl << endl << "Фамилия: " << shkolota[i].name /*<< "\nИмя: " << shkolota[i].last_name << "\nОтчество: " << shkolota[i].middle_name << "\nПол" << shkolota[i].pol << "\nНациональность: " << shkolota[i].national <<
+			cout << endl << endl << "Фамилия: " << shkolota[i].name << "\nИмя: " << shkolota[i].last_name << "\nОтчество: " << shkolota[i].middle_name << "\nПол" << shkolota[i].pol << "\nНациональность: " << shkolota[i].national <<
 					"\nРост: " << shkolota[i].height << "\nВес: " << shkolota[i].weight << "\nНомер телефона: " << shkolota[i].phone_number << "\nДата рождения: "
 					<< shkolota[i].date[0] << "." << shkolota[i].date[1] << "." << shkolota[i].date[2] << "\nДомашний адрес: " << "\nПочтовый индекс: " << shkolota[i].adress.post_index << "\nСтрана: " << shkolota[i].adress.country <<
 					"\nОбласть: " << shkolota[i].adress.oblast << "\nРайон: " << shkolota[i].adress.raqon << "\nГород: " << shkolota[i].adress.city << "\nУлица: " << shkolota[i].adress.street
 					<< "\nНомер дома: " << shkolota[i].adress.house << "\nНомер квартиры: " << shkolota[i].adress.flat << "\nИмя школы: " << shkolota[i].school << "\nКласс: " <<
-					shkolota[i].clas*/ << endl;
-		}
-
-		else
-		{
-			cout << "Такого студента нет!!!";
-		}
+					shkolota[i].clas << endl;
+			++proverca;
+		}		
 	}
+	if (proverca == 0)
+	{
+		cout << "/nТакого студента нет!!!/n";
+	}
+	
+	
 }
 
 void Print(Shkolota* shkolota, int a, int n)
@@ -308,8 +311,6 @@ tryAgo://Все остальные GOTO возвращают в эту точк�
 	}
 
 }
-
-
 
 int main()
 {
